@@ -83,11 +83,6 @@ const Home = () => {
   const handleFocus = (sc) => {
     if(!focusRef.current) return;
     boxRef.current.scrollTop = focusRef.current.offsetHeight * (sc - 4 < 0 ? 0 : sc - 4);
-    console.log(
-      sc,
-      boxRef.current.scrollTop,
-      focusRef.current.offsetHeight * (sc - 4 < 0 ? 0 : sc - 4)
-    );
   }
 
   return (

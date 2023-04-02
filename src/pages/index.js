@@ -4,7 +4,6 @@ import styles from '@/styles/Home.module.css'
 import { useEffect, useRef, useState } from 'react'
 import axios from 'axios'
 
-
 const Home = () => {
   const [search, setSearch] = useState();
   const [data, setData] = useState();
@@ -69,7 +68,7 @@ const Home = () => {
         setSelected(data.length);
       }
       else {
-        handleFocus(sc - 1);
+        handleFocus(sc - 1, false);
         setSelected(selected - 1);
       }
     }
@@ -80,9 +79,15 @@ const Home = () => {
     }
   }
 
-  const handleFocus = (sc) => {
+  const [handleFocusCount, setHandleFocusCount] = useState(3);
+  const handleFocus = (sc, isDown = true) => {
     if(!focusRef.current) return;
-    boxRef.current.scrollTop = focusRef.current.offsetHeight * (sc - 4 < 0 ? 0 : sc - 4);
+
+    if(!isDown && handleFocusCount > 1) setHandleFocusCount(handleFocusCount - 1);
+    else setHandleFocusCount(4);
+
+    const height = isDown ? sc - 4 : sc - handleFocusCount;
+    boxRef.current.scrollTop = focusRef.current.offsetHeight * (height < 0 ? 0 : height);
   }
 
   return (

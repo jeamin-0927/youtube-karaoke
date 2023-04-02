@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Dimi KARAOKE",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["watch.js"]
+    }
+  ],
+  "icons": {
+    "2000": "logo.png"
+  }
+}

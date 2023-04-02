@@ -11,15 +11,12 @@ const getYoutubeData = (response) => {
 		)) 
 		continue;
 		let name = e.split(`{"runs":[{"text":"`)[1].split(`"}],"accessibility":{"accessibilityData":{"label":"`)[0];
-		if(name.includes(`[TJ노래방] `)) name = name.split(`[TJ노래방] `)[1];
-		if(name.includes(`[KY 금영노래방] `)) name = name.split(`[KY 금영노래방] `)[1];
-		if(name.includes(`[KY ENTERTAINMENT] `)) name = name.split(`[KY ENTERTAINMENT] `)[1];
 		if(name.includes(` / TJ Karaoke`)) name = name.split(` / TJ Karaoke`)[0];
 		if(name.includes(` / KY Karaoke`)) name = name.split(` / KY Karaoke`)[0];
 		
 		const title = name.split(` - `)[0];
-		let artist = name.split(` - `)[1];
-		if(artist.includes(`(`)) artist = artist.split(`(`)[0];
+		const artist = name.split(` - `)[1];
+		// if(artist.includes(`(`)) artist = artist.split(`(`)[0];
 
 		const videoId = e.split(`"videoId":"`)[1].split(`"`)[0];
 

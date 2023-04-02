@@ -1,58 +1,5 @@
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const menter = {
-  0: [
-    '혹시... 성대가 없는건 아니..죠?'
-  ], 10: [], 20: [], 30: [], 40: [],
-  50: [
-    '50점... 이 정도면 잘한거 아닌가요?'
-  ],
-  60: [
-    '호오.. 그래도 중간은 넘었어!'
-  ],
-  70: [
-    '70점.......... 내가 70점이라니!!'
-  ],
-  80: [
-    '아쉬워요... 80점이라니...'
-  ],
-  90: [
-    '조오끔만 더 잘 했으면 백 점인데,, 아쉽네요!'
-  ],
-  100: [
-    '가수 왜 안하시는지 의문인데..?'
-  ]
-}
-
-const score = () => {
-  const scores = rand(0, 10) == 0 ? 0 : rand(0, 50) + 50;
-  const tener = scores - (scores % 10);
-  const mets = menter[tener][rand(0, menter[tener].length - 1)];
-  document.querySelector('body').innerHTML = `
-    <div class="score-div">
-      <div class="score-display">
-        <div class="score-title">SCORE</div>
-        <div class="score-score">0</div>
-      </div>
-      <div class="score-ment"></div>
-    </div>
-  `;
-  const scoreDisplay = document.querySelector('.score-score');
-  let scorering = 0;
-  const scoreInterval = setInterval(() => {
-    scoreDisplay.innerHTML = scorering;
-    scorering++;
-    if(scorering > scores) {
-      clearInterval(scoreInterval);
-      document.querySelector('.score-ment').innerHTML = mets;
-    }
-  }, 10);
-
-  setTimeout(() => {
-    window.close();
-  }, 15000);
-}
-
 const watch = () => {
   document.querySelector('html').style.overflow = 'hidden';
   document.querySelector('body').style.overflow = 'hidden';
@@ -99,7 +46,7 @@ const timeCheck = () => {
   const nowTimeSec = parseInt(nowTimeArr[0]) * 60 + parseInt(nowTimeArr[1]);
 
   if(endTimeSec - nowTimeSec < 1) {
-    score();
+    window.close();
   }
 }
 const timeChecker = () => {

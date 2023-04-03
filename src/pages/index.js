@@ -12,6 +12,7 @@ const Home = () => {
     let completed = false;
     if(!search) return;
     const fetchData = async () => {
+      setSelected(0);
       const result = await axios.get(`/api/search?q=${search}`);
       if(completed) return;
       const { data } = result;
@@ -23,7 +24,6 @@ const Home = () => {
         items.push({no: count, ...e});
       }
       setData(items);
-      setSelected(0);
     }
     fetchData();
     return () => {
